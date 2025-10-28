@@ -33,6 +33,18 @@ class TargetMuscle(Base):
     exercise = relationship("Exercise", back_populates="target_muscles")
     muscle_group = relationship("MuscleGroup")
 
+class LibraryTargetMuscle(Base):
+    __tablename__ = "library_target_muscles"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    library_exercise_id = Column(Integer, ForeignKey("library_exercises.id"))
+    muscle_group_id = Column(Integer, ForeignKey("muscle_groups.id"))
+    activation_level = Column(Enum(ActivationLevel), nullable=False)
+    
+    # Relationships
+    library_exercise = relationship("LibraryExercise", back_populates="target_muscles")
+    muscle_group = relationship("MuscleGroup")
+
 class LibraryExercise(Base):
     __tablename__ = "library_exercises"
     
@@ -47,8 +59,14 @@ class LibraryExercise(Base):
     is_calisthenics = Column(Boolean, default=False)
     calisthenics_type = Column(Enum(CalisthenicsType), nullable=True)
     
+    # Additional fields to match frontend structure
+    muscle_group = Column(String)  # Primary muscle group (Chest, Back, etc.)
+    weight_type = Column(Enum(WeightType), nullable=True)  # free, body, machine
+    split_types = Column(JSON)  # List of split types
+    
     # Relationships
     exercises = relationship("Exercise", back_populates="library_exercise")
+    target_muscles = relationship("LibraryTargetMuscle", back_populates="library_exercise")
 
 class Exercise(Base):
     __tablename__ = "exercises"

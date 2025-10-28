@@ -26,12 +26,24 @@ class LibraryExerciseBase(BaseModel):
     category: Optional[str] = None
     is_calisthenics: bool = False
     calisthenics_type: Optional[CalisthenicsType] = None
+    muscle_group: Optional[str] = None
+    weight_type: Optional[WeightType] = None
+    split_types: List[str] = []
 
 class LibraryExerciseCreate(LibraryExerciseBase):
     pass
 
+class LibraryTargetMuscleResponse(BaseModel):
+    id: int
+    muscle_group_id: int
+    activation_level: ActivationLevel
+    
+    class Config:
+        from_attributes = True
+
 class LibraryExerciseResponse(LibraryExerciseBase):
     id: int
+    target_muscles: List[LibraryTargetMuscleResponse] = []
     
     class Config:
         from_attributes = True

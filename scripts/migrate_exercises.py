@@ -140,7 +140,10 @@ def migrate_exercises(db: Session):
                 difficulty="Intermediate",  # Default difficulty
                 category="Strength",
                 is_calisthenics=exercise_data.get("calisthenicsType") is not None,
-                calisthenics_type=map_calisthenics_type(exercise_data.get("calisthenicsType"))
+                calisthenics_type=map_calisthenics_type(exercise_data.get("calisthenicsType")),
+                muscle_group=exercise_data.get("muscleGroup", "Unknown"),
+                weight_type=map_weight_type(exercise_data.get("weightType", "free")),
+                split_types=exercise_data.get("splitTypes", ["perMuscleGroup"])
             )
             
             db.add(library_exercise)
