@@ -1587,35 +1587,6 @@ allExercises = [
     ]
   },
   {
-    "id": 50,
-    "name": "Spider Curls",
-    "muscleGroup": "Biceps",
-    "weightType": "free",
-    "targetMuscles": [
-      {
-        "muscle": "Biceps (Long Head)",
-        "activationLevel": "high"
-      },
-      {
-        "muscle": "Biceps (Short Head)",
-        "activationLevel": "high"
-      },
-      {
-        "muscle": "Brachialis",
-        "activationLevel": "medium"
-      },
-      {
-        "muscle": "Front Delts",
-        "activationLevel": "low"
-      }
-    ],
-    "splitTypes": [
-      "pull",
-      "upper",
-      "perMuscleGroup"
-    ]
-  },
-  {
     "id": 51,
     "name": "Incline Dumbbell Curls",
     "muscleGroup": "Biceps",
