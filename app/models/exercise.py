@@ -67,6 +67,7 @@ class LibraryExercise(Base):
     # Relationships
     exercises = relationship("Exercise", back_populates="library_exercise")
     target_muscles = relationship("LibraryTargetMuscle", back_populates="library_exercise")
+    workout_exercises = relationship("WorkoutExercise", back_populates="exercise")
 
 class Exercise(Base):
     __tablename__ = "exercises"
@@ -81,4 +82,3 @@ class Exercise(Base):
     # Relationships
     library_exercise = relationship("LibraryExercise", back_populates="exercises")
     target_muscles = relationship("TargetMuscle", back_populates="exercise")
-    workout_exercises = relationship("WorkoutExercise", back_populates="exercise")

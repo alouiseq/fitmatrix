@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 from datetime import datetime
 from app.models.workout import SplitType
+from app.schemas.exercise import LibraryExerciseResponse
 
 class WorkoutExerciseBase(BaseModel):
     exercise_id: int
@@ -17,7 +18,7 @@ class WorkoutExerciseCreate(WorkoutExerciseBase):
 
 class WorkoutExerciseResponse(WorkoutExerciseBase):
     id: int
-    exercise: Optional[dict] = None
+    exercise: Optional[LibraryExerciseResponse] = None
     
     class Config:
         from_attributes = True

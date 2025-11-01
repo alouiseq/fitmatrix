@@ -38,7 +38,7 @@ class WorkoutExercise(Base):
     
     id = Column(Integer, primary_key=True, index=True)
     workout_id = Column(Integer, ForeignKey("workouts.id"))
-    exercise_id = Column(Integer, ForeignKey("exercises.id"))
+    exercise_id = Column(Integer, ForeignKey("library_exercises.id"))
     order = Column(Integer, nullable=False)  # Order within the workout
     sets = Column(Integer)
     reps = Column(String)  # Can be "8-12" or "AMRAP" etc.
@@ -48,4 +48,4 @@ class WorkoutExercise(Base):
     
     # Relationships
     workout = relationship("Workout", back_populates="exercises")
-    exercise = relationship("Exercise", back_populates="workout_exercises")
+    exercise = relationship("LibraryExercise", back_populates="workout_exercises")
