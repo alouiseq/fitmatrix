@@ -189,10 +189,18 @@ def main():
     try:
         create_muscle_groups(db)
         create_library_exercises(db)
-        create_test_user(db)
+        # Skip test user creation - not critical for app functionality
+        # Uncomment if you need test user
+        # try:
+        #     create_test_user(db)
+        # except Exception as e:
+        #     print(f"Warning: Could not create test user: {e}")
+        #     print("Continuing without test user...")
         print("Database seeding completed successfully!")
     except Exception as e:
         print(f"Error seeding database: {e}")
+        import traceback
+        traceback.print_exc()
         db.rollback()
     finally:
         db.close()

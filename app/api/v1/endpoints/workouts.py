@@ -121,8 +121,6 @@ def get_workout_progress_stats(
 ):
     """Get workout progress statistics for the Progress page"""
     from sqlalchemy import func
-    from app.models.exercise import Exercise, TargetMuscle
-    from app.models.muscle_group import MuscleGroup
     
     # Use test user ID for development
     user_id = 1
